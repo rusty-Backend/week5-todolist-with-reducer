@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import Checkbox from 'expo-checkbox';
 
 export type Todo = {
@@ -11,25 +11,32 @@ export type Todo = {
 type Props = {
   item: Todo;
   onToggle: () => void;
+  onRemove: () => void;
 };
 
-export default function TodoItem({ item, onToggle }: Props) {
+export default function TodoItem({ item, onToggle, onRemove }: Props) {
   return (
-    <View style={styles.row}>
-      <Text
-        style={[
-          styles.text,
-          item.done && styles.doneText
-        ]}
-      >
-        {item.text}
-      </Text>
+<View style={styles.row}>
+  <View style={styles.leftSection}>
+    <Checkbox
+      value={item.done}
+      onValueChange={onToggle}
+    />
 
-      <Checkbox
-        value={item.done}
-        onValueChange={onToggle}
-      />
-    </View>
+    <Text
+      style={[
+        styles.text,
+        item.done && styles.doneText
+      ]}
+    >
+      {item.text}
+    </Text>
+  </View>
+
+  <Pressable onPress={onRemove}>
+    <Text style={styles.removeText}>✕</Text>
+  </Pressable>
+</View>
   );
 }
 
@@ -42,6 +49,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#ddd'
   },
+  leftSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    flex: 1
+  },
   text: {
     fontSize: 18,
     flex: 1
@@ -49,5 +62,10 @@ const styles = StyleSheet.create({
   doneText: {
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid'
+  },
+  removeText: {
+    color: 'red',
+    fontSize: 18
   }
 });
+

@@ -5,7 +5,7 @@ import TodoItem from './components/TodoItem';
 import TodoInputField from './components/TodoInputField';
 
 export default function App() {
-  const { todos, addTodo, toggleTodo } = useTodos();
+  const { todos, addTodo, toggleTodo, removeTodo } = useTodos();
 
   return (
     <View style={{ padding: 20, marginTop: 50 }}>
@@ -20,6 +20,7 @@ export default function App() {
           <TodoItem
             item={item}
             onToggle={() => toggleTodo(item.id)}
+            onRemove={() => removeTodo(item.id)}
           />
         )}
       />
