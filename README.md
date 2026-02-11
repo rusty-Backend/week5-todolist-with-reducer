@@ -9,7 +9,7 @@ useState from Week 4 was replaced with useReducer.
 A delete todo feature was added.
 
 ## useState vs useReducer
-Week 4 – useState
+-Week 4 – useState
 
 User presses the + button
 
@@ -17,7 +17,7 @@ addTodo(text) runs
 
 setTodos() creates and sets a new array
 
-Week 5 useReducer:
+-Week 5 useReducer:
 User presses the + button
 
 addTodo(text) runs
@@ -28,13 +28,13 @@ The reducer receives (state, action) and returns the next state
 
 
 ## Toogle Done & Undone
-Week 4:
+-Week 4:
 User presses the checkbox
 
 toggleTodo(id) runs
 
 setTodos(todos.map(...)) updates the state
-Week5:
+-Week5:
 User presses the checkbox
 
 toggleTodo(id) runs
